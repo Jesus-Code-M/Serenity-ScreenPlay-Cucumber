@@ -1,41 +1,122 @@
-<h1 align="center"> SERENITY </h1>
+<h1 align="center"> Proyecto de Automatización: Formulario de Práctica </h1>
 
-**Cómo ejecutar pruebas en paralelo en Cucumber con Serenity: **
-- https://serenity-bdd.github.io/docs/tutorials/running_cucumber_scenarios_in_parallel#step-3-create-a-junit-platformproperties-file
-1. Crear un junit-platform.propertiesarchivo #
-Crea un nuevo archivo con el nombre junit-platform.propertiesde tu src/test/resourcescarpeta. Este archivo habilita y configura la ejecución paralela.
-Añade el siguiente contenido al archivo:
-cucumber.execution.parallel.enabled=true
-cucumber.execution.parallel.config.strategy=dynamic
-cucumber.plugin=io.cucumber.core.plugin.SerenityReporterParallel
-2. Crear un cucumber.propertiesarchivo #
-Cree un nuevo archivo con el nombre cucumber.propertiesde su src/test/resourcescarpeta. Este archivo contendrá las opciones de Cucumber para sus pruebas de Cucumber.
-Añade el siguiente contenido al archivo:
-cucumber.execution.order = random
-cucumber.plugin=pretty,json:target/cucumber.json,timeline:target/test-results/timeline
-cucumber.snippet-type=camelcase
+<p>Este proyecto implementa pruebas automatizadas para el formulario de práctica en el sitio DemoQA utilizando Serenity BDD con el patrón Screenplay y Cucumber.</p>
 
-Serenity no solo informa sobre qué requisitos se probaron, sino también sobre cómo se probaron. Incluye detalles paso a paso de cómo se desarrolló una prueba, incluidas capturas de pantalla opcionales, para que sus pruebas documenten realmente lo que hace su aplicación.
-Pero Serenity no se limita a la elaboración de informes. El objetivo subyacente de Serenity es facilitar la redacción rápida de criterios de aceptación automatizados, bien estructurados y fáciles de mantener, utilizando su biblioteca de pruebas convencional o BDD favorita.
+<h2>Estructura del Proyecto</h2>
+<p>La jerarquía del proyecto se divide en varios paquetes y clases:</p>
 
-<h2>Implementación de bibliotecas de pasos simples </h2>
-La TravellerEarningStatusPointsclase es lo que llamamos una biblioteca de pasos. Usamos la @Stepsclase como se muestra arriba para indicar una biblioteca de pasos en nuestro código de prueba: esta anotación le indica a Serenity que cree una instancia e instrumente este campo, de modo que los métodos que llame en esta biblioteca también aparezcan en los informes de prueba.
+<h3>1. Interacciones (<code>interactions</code>)</h3>
+<ul>
+    <li><strong>PracticeFormInteractions:</strong>
+        <ul>
+            <li><code>enterFirstName</code>: Ingresa el primer nombre.</li>
+            <li><code>enterLastName</code>: Ingresa el apellido.</li>
+            <li><code>enterEmailUsuario</code>: Ingresa el correo electrónico.</li>
+            <li><code>enterNumeroTelefono</code>: Ingresa el número de teléfono.</li>
+        </ul>
+    </li>
+</ul>
 
-Las bibliotecas de pasos contienen las tareas o acciones empresariales que un usuario realiza durante una prueba. Hay muchas formas de organizar las bibliotecas de pasos, pero una forma conveniente es agrupar los métodos en segmentos de comportamiento empresarial para un tipo de usuario determinado. En este caso, un viajero que está ganando puntos de estatus.
+<h3>2. Preguntas (<code>questions</code>)</h3>
+<ul>
+    <li><strong>PracticeFormQuestions:</strong>
+        <ul>
+            <li><code>isVisible</code>, <code>isPresent</code>, <code>isEnabled</code>: Verifican visibilidad, presencia y habilitación de elementos.</li>
+            <li><code>textEquals</code>, <code>textContains</code>: Validan el texto de los elementos.</li>
+            <li>Otras preguntas personalizadas.</li>
+        </ul>
+    </li>
+</ul>
 
-Tenga en cuenta que no fue necesario crear una instancia explícita de la clase Steps TravellerEarningStatusPoints. Cuando anotó una variable miembro de esta clase con la @Stepsanotación, Serenity BDD la instanciará automáticamente.
+<h3>3. Tareas (<code>tasks</code>)</h3>
+<ul>
+    <li><strong>PracticeFormTasks:</strong>
+        <ul>
+            <li><code>openPracticeFormPage</code>: Abre la página del formulario.</li>
+            <li><code>fillFirstAndLastName</code>: Completa los campos de nombre y apellido.</li>
+            <li><code>emailUsuario</code>: Ingresa el correo electrónico.</li>
+            <li><code>generoMasculino</code>, <code>generoFemenino</code>, <code>generoOtro</code>: Seleccionan el género.</li>
+            <li><code>takeScreenshotWithName</code>: Toma capturas de pantalla.</li>
+            <li><code>zoomPagina</code>: Ajusta el zoom de la página.</li>
+        </ul>
+    </li>
+</ul>
 
-Nunca debe crear instancias de bibliotecas de pasos utilizando la newpalabra clave, ya que Serenity no podrá instrumentar la biblioteca de pasos correctamente y los métodos llamados no aparecerán en los informes.
-![img.png](img.png)
+<h3>4. Definiciones de Pasos (<code>stepdefinitions</code>)</h3>
+<ul>
+    <li><strong>PracticeFormStepdefinitios:</strong>
+        <ul>
+            <li>Contiene métodos anotados con <code>@Given</code>, <code>@When</code>, <code>@Then</code>, etc., para definir el flujo de las pruebas.</li>
+            <li>Configura actores y asigna habilidades.</li>
+        </ul>
+    </li>
+</ul>
 
-**anotación @Managed**
-En una prueba JUnit de Serenity, podemos usar la anotación @Managed para administrar el ciclo de vida de WebDriver. Una vez que tenemos un controlador disponible, podemos asignarlo a un actor mediante la BrowseTheWebclase de la siguiente manera:
+<h3>5. Interfaz de Usuario (<code>userinterface</code>)</h3>
+<ul>
+    <li><strong>PracticeFormUserinterface:</strong>
+        <ul>
+            <li><code>FORM_URL</code>: URL del formulario.</li>
+            <li>Targets como <code>FIRST_NAME</code>, <code>LAST_NAME</code>, <code>EMAIL_USER</code>, entre otros.</li>
+        </ul>
+    </li>
+</ul>
 
-**anotación  @CastMember**
-Si solo necesitamos usar un actor que pueda interactuar con un sitio web usando Selenium, podemos usar la anotación @CastMember. Esta anotación configurará un actor con una instancia de WebDriver y administrará el ciclo de vida del navegador por nosotros (por lo que no es necesaria la @Managedanotación o WebDriverla variable). Puedes ver un ejemplo de esta anotación en acción aquí:
+<h3>6. Runner (<code>runner</code>)</h3>
+<ul>
+    <li><strong>TestSuitePracticeFormRunner:</strong>
+        <ul>
+            <li>Configura las opciones de Cucumber (ruta de archivos <code>features</code>, definiciones de pasos y reportes).</li>
+        </ul>
+    </li>
+</ul>
 
-**Actores en Cucumber**
-Configurar actores en Cucumber es un poco más complicado que en JUnit, porque generalmente nos referimos a ellos por su nombre en los escenarios de Cucumber. 
+<h2>Tecnologías Utilizadas</h2>
+<ul>
+    <li><strong>Serenity BDD:</strong> Framework principal para gestionar pruebas.</li>
+    <li><strong>Screenplay Pattern:</strong> Patrón que organiza las pruebas en tareas, interacciones y preguntas.</li>
+    <li><strong>Cucumber:</strong> Framework BDD para escribir casos de prueba en lenguaje natural.</li>
+    <li><strong>Java:</strong> Lenguaje de programación.</li>
+    <li><strong>Selenium WebDriver:</strong> Para la interacción con navegadores.</li>
+    <li><strong>JUnit:</strong> Para la ejecución de pruebas.</li>
+</ul>
 
+<h2>Requisitos Previos</h2>
 
+<h3>Configuración del Entorno:</h3>
+<ul>
+    <li>Java 11 o superior.</li>
+    <li>Maven instalado.</li>
+    <li>Navegador Chrome o Edge con los drivers correspondientes.</li>
+</ul>
 
+<h3>Dependencias de Maven:</h3>
+<p>Incluya las dependencias necesarias en el archivo <code>pom.xml</code>:</p>
+
+<pre><code>&lt;dependencies&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.serenity-bdd&lt;/groupId&gt;
+    &lt;artifactId&gt;serenity-core&lt;/artifactId&gt;
+    &lt;version&gt;3.9.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.serenity-bdd&lt;/groupId&gt;
+    &lt;artifactId&gt;serenity-screenplay&lt;/artifactId&gt;
+    &lt;version&gt;3.9.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.serenity-bdd&lt;/groupId&gt;
+    &lt;artifactId&gt;serenity-cucumber6&lt;/artifactId&gt;
+    &lt;version&gt;3.9.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.cucumber&lt;/groupId&gt;
+    &lt;artifactId&gt;cucumber-java&lt;/artifactId&gt;
+    &lt;version&gt;7.13.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+<h2>Configuración de Ejecución</h2>
+<h3>Archivos <code>.feature</code>:</h3>
+<p>Ubique sus escenarios en la carpeta <code>src/test/resources/features</code>.</p>
+<h3>Runner:</h3>
+<p>Configure el archivo <code>TestSuitePracticeFormRunner.java</code> para definir las rutas y plugins de Cucumber.</p>

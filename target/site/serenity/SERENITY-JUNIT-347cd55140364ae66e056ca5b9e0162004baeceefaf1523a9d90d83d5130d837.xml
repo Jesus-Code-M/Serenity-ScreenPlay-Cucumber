@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Llenar el formulario de Practice Form de ToolsQA" skipped="0" tests="2" time="38.05" timestamp="2024-12-19 06:44:12"><testcase name="Llenar Nombre, Apellido y Email del Formulario"/><testcase name="Marcar los tres radio button de Género"/></testsuite>

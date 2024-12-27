@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- Nivo Slider -->
+<link rel="stylesheet" href="nivo-slider/3.2/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="nivo-slider/3.2/themes/default/default.css" type="text/css" media="screen" />
+<script src="nivo-slider/3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        var screenshotIndex = getUrlVars()["screenshot"];
+
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                startSlide: screenshotIndex,
+                effect: 'fade',
+                animSpeed: 200,
+                manualAdvance: true
+            });
+        });
+
+        $(window).keydown(function(e) {
+            switch(e.which) {
+                case 37:
+                    $('a.nivo-prevNav').click();
+                    break;
+                case 39:
+                    $('a.nivo-nextNav').click();
+                    break;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="493b5d6cd74b1c6d3dab40f4ce4ac7f58e91a6c2e02b52bc0e1242b5b90d7bf4.html">Practiceform</a></span>
+                > <span class="truncate-60"><a
+                    href="8ec11eecec8e947a475f6e7408cf1c75d2b476d540630458414470fb905ab7e2.html">Marcar los tres radio button de G&eacute;nero </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 18-12-2024 15:06</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">Llenar El Formulario De Practice Form De ToolsQA </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">Marcar los tres radio button de G&eacute;nero
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+        <div class="slider-wrapper theme-default">
+            <div id="slider">
+                <img src="35cd680359a5669b2a8f7d60f163509eee042ca41acb7d64c4dadd1c5a2ac9a7.png" title=" Given el usuario marca radio button Male" width="0"/>
+                <img src="35cd680359a5669b2a8f7d60f163509eee042ca41acb7d64c4dadd1c5a2ac9a7.png" title=" User " width="0"/>
+                <img src="35cd680359a5669b2a8f7d60f163509eee042ca41acb7d64c4dadd1c5a2ac9a7.png" title=" User opens the browser at https://demoqa.com/automation-practice-form" width="0"/>
+                <img src="cb4ec1521d0f1514cefa034fb1fcfae77bd64729c27bf474c3181d88f5d0cb6c.png" title=" User opens the browser at https://demoqa.com/automation-practice-form (completed)" width="0"/>
+                <img src="cb4ec1521d0f1514cefa034fb1fcfae77bd64729c27bf474c3181d88f5d0cb6c.png" title=" User  (completed)" width="0"/>
+                <img src="cb4ec1521d0f1514cefa034fb1fcfae77bd64729c27bf474c3181d88f5d0cb6c.png" title=" User " width="0"/>
+                <img src="f37ceb803b3eac69673991721c6eaaadff74875a5441876dfea2692355b58cff.png" title=" User  (completed)" width="0"/>
+                <img src="ca7dfcdd253c8d6c71c7ead0fa229b97702110ec2a60a6affc47310277a932ae.png" title=" Given el usuario marca radio button Male (completed)" width="0"/>
+                <img src="a1ef1228a9c95b0dffbbf3bec2da5a083dfce73af35bcbe374307c43edfff967.png" title=" When el usuario marca radio button Female" width="0"/>
+                <img src="a1ef1228a9c95b0dffbbf3bec2da5a083dfce73af35bcbe374307c43edfff967.png" title=" User " width="0"/>
+                <img src="a2802514fa1411325f6d9f259706b936803a942974b41e647ecd06e19889fda9.png" title=" When el usuario marca radio button Female (completed)" width="0"/>
+                <img src="3caf2f43bc2e048ba07a02c2a065b80064b17d531c81c8f9012ea2dfe781c07c.png" title=" Then el usuario marca radio button Other" width="0"/>
+                <img src="3caf2f43bc2e048ba07a02c2a065b80064b17d531c81c8f9012ea2dfe781c07c.png" title=" User " width="0"/>
+                <img src="e64a700874b58ded9102f0d01d88549b81c01626c10c8ceb3002f7b357ad8598.png" title=" Then el usuario marca radio button Other (completed)" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" And el usuario ingresa el numero de telefono &quot;1234567890&quot;" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" el usuario ingresa el numero de telefono {0 }" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" User enter email del usuario" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" User enters '1234567890' into Mobile Number" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" User enter email del usuario (completed)" width="0"/>
+                <img src="70abc57161cb2340a3b5666a5bc59e5c3aa24010ebeded203abb5558a54cac2f.png" title=" el usuario ingresa el numero de telefono {0 } (completed)" width="0"/>
+                <img src="bd1215249bf63b94110e7aac62afe99d85018e6d726fd5d79405b683be79e1b3.png" title=" And el usuario ingresa el numero de telefono &quot;1234567890&quot; (completed)" width="0"/>
+
+                <img src="cd94b4b6a54dfa74d9d00259dbcb0be8ab2ae01a5822f239bae1ce7e4f79a587.png" title=" And el usuario toma un screenshot llamado "Formulario_ButtonGender": <span class='success-color'>SUCCESS</span>" width="0"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.2.8</span>
+</div>
+</body>
+</html>
